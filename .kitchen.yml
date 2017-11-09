@@ -1,0 +1,59 @@
+---
+driver:
+  name: vagrant
+  provision: true
+
+provisioner:
+  name: chef_zero
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: centos-6.9
+  - name: centos-7.4
+
+suites:
+  - name: centos7
+    excludes:
+      - centos-6.9
+    verifier:
+      inspec_tests:
+          - name: centos7
+            path: test/integration/centos7/inspec
+    run_list:
+      - recipe[wma-clamav::whitelist]
+    attributes: {
+      'wma' : {
+        'clamav' : {
+          'config' : {
+            'whitelist' : {
+              'signatures' : { 'definitions'  : ['SecuriteInfo.com.Adware.Skodna.Generic.JA.25338.10539.25885']},
+              'files' : { 'definitions'  : ['/some/random/file.txt'] }
+            }
+          }
+        }
+      }
+    }
+
+  - name: centos6
+    excludes:
+      - centos-7.4
+    verifier:
+      inspec_tests:
+          - name: centos6
+            path: test/integration/centos6/inspec
+    run_list:
+      - recipe[wma-clamav::whitelist]
+    attributes: {
+      'wma' : {
+        'clamav' : {
+          'config' : {
+            'whitelist' : {
+              'signatures' : { 'definitions'  : ['SecuriteInfo.com.Adware.Skodna.Generic.JA.25338.10539.25885']},
+              'files' : { 'definitions'  : ['/some/random/file.txt'] }
+            }
+          }
+        }
+      }
+    }
