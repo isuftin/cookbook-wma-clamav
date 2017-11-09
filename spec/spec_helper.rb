@@ -1,0 +1,10 @@
+require 'chefspec'
+require 'chefspec/berkshelf'
+
+RSpec.configure do |config|
+  config.platform = 'centos'
+  config.version = '6.9'
+  config.color = true
+end
+
+at_exit { ChefSpec::Coverage.report! }
