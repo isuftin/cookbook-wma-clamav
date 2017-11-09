@@ -1,7 +1,0 @@
-name: centos6
-title: CentOS 6.x WMA ClamAV
-maintainer: Ivan Suftin (isuftin@usgs.gov)
-license: CPL1.0
-copyright: None
-summary: Verify that the default settings are configured
-version: 0.0.1
