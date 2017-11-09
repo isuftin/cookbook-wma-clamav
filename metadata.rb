@@ -12,5 +12,3 @@ supports         'centos', '>= 6.6'
 supports         'centos', '>= 7.1'
 
 chef_version '>= 12.0.0'
-
-depends 'clamav', '~> 1.3.0'
